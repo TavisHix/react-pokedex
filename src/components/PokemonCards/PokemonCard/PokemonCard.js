@@ -24,7 +24,7 @@ import psychic from '../../../images/icons/psychic.webp';
 import rock from '../../../images/icons/rock.webp';
 import steel from '../../../images/icons/steel.webp';
 
-const PokemonCard = ( pokemon ) => {
+const PokemonCard = React.memo(( pokemon ) => {
     const classes = useStyles();
     const history = useHistory();
     let  theme = createTheme();
@@ -171,7 +171,7 @@ const PokemonCard = ( pokemon ) => {
         </Grid>
     );
     
-}
+})
 
 
 export default PokemonCard;
