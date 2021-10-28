@@ -1,57 +1,89 @@
 import React, { useState, useEffect } from 'react'
+import { Waypoint } from 'react-waypoint';
 import { Grid, Container,  } from '@material-ui/core';
 import Pagination from '@mui/material/Pagination';
+import axios from 'axios';
 
 import useStyles from './PokeCardsStyles'
 import { getAllPokemon, getPokemon } from '../../services/services';
 import Auxilary from '../../hoc/Auxiliary/Auxiliary';
 import PokemonCard from './PokemonCard/PokemonCard';
 
+
+
+
 const PokemonCards = () => {
-    const [pokemonData, setPokemonData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const intialUrl = 'http://pokeapi.co/api/v2/pokemon/?limit=811';
-    const [pageNumber, setPageNumber] = useState(0);
+    const d = new Date();
+    let start, stop;
+    const classes = useStyles();
+    const [ nextUrl, setNextUrl] = useState(null)
+    const [ allPokemon, setAllPokemon] = useState([]);
+    const [ isLoading, setIsLoading ] = useState(true);
 
     useEffect(() => {
-        async function fetchData() {
-            let response = await getAllPokemon(intialUrl);
-            await loadingPokemon(response.results)
-            setLoading(false);
-        }
-        fetchData();
+        const url = 'https://pokeapi.co/api/v2/pokemon/';
+        searchPokedex(url)
     }, [])
 
-    const loadingPokemon = async (data) => {
-        let _pokemonData = await Promise.all(
-            data.map(async pokemon => {
-                let pokemonInfo = await getPokemon(pokemon.url);
-                return pokemonInfo;
-        }))
-        setPokemonData(_pokemonData);
+    const fetchPokemonDetails = async url => {
+        const response = await axios.get(url);
+        const {name, id, types} = response.data;
+        return{id, name, types}
     }
 
-    const changePage = (event, value) => {
-        setPageNumber(value);
+    const searchPokedex = async url => {
+        setIsLoading(true);
+        try{
+            console.log('starting fetch')
+            const response = await axios.get(url);
+            const results = response.data.results;
+            const {next} = response.data;
+            if(next){setNextUrl(next)};
+            const detailRequest = results.map(async pokemon => await fetchPokemonDetails(pokemon.url));
+
+            await Promise.all(detailRequest).then(detailResults => {
+            setAllPokemon( [...allPokemon, ...detailResults]);
+            })
+            console.log('fetch finished')
+        }catch(e){
+        console.error(e)
+        }finally{
+        setIsLoading(false)
+        }
     }
 
-    const classes = useStyles();
+    const setupWaypoint = () => {
+        if(allPokemon.length <= 900) {
+            console.log('if for waypoint')
+        return (
+            <Waypoint onEnter={() => {
+                console.log('entering waypoint')
+                searchPokedex(nextUrl)
+            }} />
+        )
+        }
+        else{
+        setAllPokemon(allPokemon.splice(0, 898));
+        }
+    }
 
-    const pokemonPerPage = 100;
-    const pagesVisited = pageNumber * pokemonPerPage;
-    const pageCount = Math.round(pokemonData.length / pokemonPerPage )
+    let renderPokemon = () => allPokemon.map((p, i) => {
+        return (
+            <Auxilary>
+                <PokemonCard key={p.id} pokemon={p} />
+                {i == allPokemon.length - 3 && setupWaypoint()}
+            </Auxilary>
+        )
+        // i === allPokemon.length - 6 ? <div key={p.id} ref={lastElementRef}>{p.name}</div> :   <div key={p.id}>{p.name}</div>
+    });
+
     return ( 
         <Auxilary>
-            <Pagination count={pageCount} size="large" variant="outlined" color="primary" onChange={changePage}/>
             <Container className={classes.cardGrid}>
                 <Grid container spacing={4}>
-                    { loading ? <h1>Loading...</h1> : (
-                        <Auxilary>
-                            {pokemonData.slice(pagesVisited, pagesVisited + pokemonPerPage).map((pokemon, i) => {
-                                return <PokemonCard key={pokemon.id} pokemon={pokemon} />
-                            })}
-                        </Auxilary>
-                    )}
+                    <Auxilary>
+                        {renderPokemon()}
+                    </Auxilary>
                 </Grid>
             </Container>
         </Auxilary>
