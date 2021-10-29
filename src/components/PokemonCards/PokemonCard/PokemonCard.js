@@ -38,7 +38,7 @@ const PokemonCard = React.memo(( pokemon ) => {
         return str;
       }
 
-    // TODO: Funtion is used in pokemon Card. REdcue repetitive functions by creatign a single location for this funtion and importing it instead
+    // TODO: Funtion is used in pokemon Card. Redcue repetitive functions by creatign a single location for this funtion and importing it instead
     const getBgColor = ( type ) => {
         switch ( type ) {
             case type = 'normal':
@@ -170,7 +170,6 @@ const PokemonCard = React.memo(( pokemon ) => {
              </MuiThemeProvider>
         </Grid>
     );
-    
 })
 
 

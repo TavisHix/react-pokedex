@@ -5,6 +5,7 @@ import Pagination from '@mui/material/Pagination';
 import axios from 'axios';
 
 import useStyles from './PokeCardsStyles'
+import LoadingPokemonCard from '../UI/Loading/LoadingPokemonCard/LoadingPokemonCard';
 import { getAllPokemon, getPokemon } from '../../services/services';
 import Auxilary from '../../hoc/Auxiliary/Auxiliary';
 import PokemonCard from './PokemonCard/PokemonCard';
@@ -71,11 +72,16 @@ const PokemonCards = () => {
         return (
             <Auxilary>
                 <PokemonCard key={p.id} pokemon={p} />
-                {i == allPokemon.length - 3 && setupWaypoint()}
+                {i == allPokemon.length - 1 && setupWaypoint()}
             </Auxilary>
         )
         // i === allPokemon.length - 6 ? <div key={p.id} ref={lastElementRef}>{p.name}</div> :   <div key={p.id}>{p.name}</div>
     });
+
+    let arr = [1,2,3,4]
+    let renderPokemonCardLoading = () => arr.map((p) => {
+        return (<LoadingPokemonCard/>)
+    })
 
     return ( 
         <Auxilary>
@@ -83,6 +89,7 @@ const PokemonCards = () => {
                 <Grid container spacing={4}>
                     <Auxilary>
                         {renderPokemon()}
+                        {isLoading && renderPokemonCardLoading()}
                     </Auxilary>
                 </Grid>
             </Container>
