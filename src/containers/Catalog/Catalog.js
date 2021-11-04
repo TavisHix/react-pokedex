@@ -13,16 +13,16 @@ const styles = theme => ({
       }
 });
 
-class PokeSearch extends Component {
+class Catalog extends Component {
     render () {
 
         return (
             <Container >
-                <PokemonCards/>
+                <PokemonCards filter={this.props.filter}/>
             </Container>
         );
     };
 }
 
 
-export default withStyles(styles)(PokeSearch);
+export default withStyles(styles)(Catalog);

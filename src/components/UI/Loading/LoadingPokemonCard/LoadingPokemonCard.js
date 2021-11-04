@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardContent, Grid, MuiThemeProvider, createTheme, responsiveFontSizes} from '@material-ui/core';
-import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Skeleton from '@mui/material/Skeleton';
 import useStyles from './LoadingPokemonCardStyles';

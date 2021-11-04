@@ -35,7 +35,6 @@ const Pokemon = (props) => {
     useEffect(() => {
         async function fetchData() {
             let response = await getSinglePokemonData(props.match.params.id);
-            console.log(response);
             setPokemonData(response);
             setLoading(false);
         }

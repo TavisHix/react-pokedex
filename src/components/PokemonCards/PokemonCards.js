@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { Waypoint } from 'react-waypoint';
 import { Grid, Container,  } from '@material-ui/core';
-import Pagination from '@mui/material/Pagination';
 import axios from 'axios';
 
 import useStyles from './PokeCardsStyles'
 import LoadingPokemonCard from '../UI/Loading/LoadingPokemonCard/LoadingPokemonCard';
-import { getAllPokemon, getPokemon } from '../../services/services';
 import Auxilary from '../../hoc/Auxiliary/Auxiliary';
 import PokemonCard from './PokemonCard/PokemonCard';
 
 
 
 
-const PokemonCards = () => {
-    const d = new Date();
-    let start, stop;
+const PokemonCards = ({filter}) => {
     const classes = useStyles();
     const [ nextUrl, setNextUrl] = useState(null)
     const [ allPokemon, setAllPokemon] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
+    const [ renderedPokemon, setRenderedPokemon] = useState([])
 
     useEffect(() => {
         const url = 'https://pokeapi.co/api/v2/pokemon/';
@@ -35,7 +32,6 @@ const PokemonCards = () => {
     const searchPokedex = async url => {
         setIsLoading(true);
         try{
-            console.log('starting fetch')
             const response = await axios.get(url);
             const results = response.data.results;
             const {next} = response.data;
@@ -45,7 +41,6 @@ const PokemonCards = () => {
             await Promise.all(detailRequest).then(detailResults => {
             setAllPokemon( [...allPokemon, ...detailResults]);
             })
-            console.log('fetch finished')
         }catch(e){
         console.error(e)
         }finally{
@@ -55,32 +50,38 @@ const PokemonCards = () => {
 
     const setupWaypoint = () => {
         if(allPokemon.length <= 900) {
-            console.log('if for waypoint')
-        return (
-            <Waypoint onEnter={() => {
-                console.log('entering waypoint')
-                searchPokedex(nextUrl)
-            }} />
-        )
+            return (
+                <Waypoint onEnter={() => {
+                    searchPokedex(nextUrl)
+                }} />
+            )
         }
         else{
-        setAllPokemon(allPokemon.splice(0, 898));
         }
     }
 
     let renderPokemon = () => allPokemon.map((p, i) => {
-        return (
-            <Auxilary>
-                <PokemonCard key={p.id} pokemon={p} />
-                {i == allPokemon.length - 1 && setupWaypoint()}
-            </Auxilary>
-        )
-        // i === allPokemon.length - 6 ? <div key={p.id} ref={lastElementRef}>{p.name}</div> :   <div key={p.id}>{p.name}</div>
+        // console.log(p.name.includes(filter))
+        if(p.name.includes(filter)) {
+            if(i < 807) {
+                return (
+                    <Auxilary>
+                        <PokemonCard key={p.id} pokemon={p} />
+                        {i === allPokemon.length - 1 && setupWaypoint()}
+                    </Auxilary>
+                )
+            }
+            else{
+                return null;
+                //Do nothing for pokemon over #807
+            }
+        }
     });
 
+    
     let arr = [1,2,3,4]
-    let renderPokemonCardLoading = () => arr.map((p) => {
-        return (<LoadingPokemonCard/>)
+    let renderPokemonCardLoading = () => arr.map((p,i) => {
+        return (<LoadingPokemonCard key={p} />)
     })
 
     return ( 
