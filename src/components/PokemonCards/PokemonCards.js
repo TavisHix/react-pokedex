@@ -11,12 +11,11 @@ import PokemonCard from './PokemonCard/PokemonCard';
 
 
 
-const PokemonCards = ({filter}) => {
+const PokemonCards = () => {
     const classes = useStyles();
     const [ nextUrl, setNextUrl] = useState(null)
     const [ allPokemon, setAllPokemon] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
-    const [ renderedPokemon, setRenderedPokemon] = useState([])
 
     useEffect(() => {
         const url = 'https://pokeapi.co/api/v2/pokemon/';
@@ -42,9 +41,9 @@ const PokemonCards = ({filter}) => {
             setAllPokemon( [...allPokemon, ...detailResults]);
             })
         }catch(e){
-        console.error(e)
+            console.error(e)
         }finally{
-        setIsLoading(false)
+            setIsLoading(false)
         }
     }
 
@@ -61,24 +60,20 @@ const PokemonCards = ({filter}) => {
     }
 
     let renderPokemon = () => allPokemon.map((p, i) => {
-        // console.log(p.name.includes(filter))
-        if(p.name.includes(filter)) {
-            if(i < 807) {
-                return (
-                    <Auxilary>
-                        <PokemonCard key={p.id} pokemon={p} />
-                        {i === allPokemon.length - 1 && setupWaypoint()}
-                    </Auxilary>
-                )
-            }
-            else{
-                return null;
-                //Do nothing for pokemon over #807
-            }
+        if(i < 807) {
+            return (
+                <Auxilary>
+                    <PokemonCard key={p.id} pokemon={p} />
+                    {i === allPokemon.length - 1 && setupWaypoint()}
+                </Auxilary>
+            )
+        }
+        else{
+            return null;
+            //Do nothing for pokemon over #807
         }
     });
 
-    
     let arr = [1,2,3,4]
     let renderPokemonCardLoading = () => arr.map((p,i) => {
         return (<LoadingPokemonCard key={p} />)

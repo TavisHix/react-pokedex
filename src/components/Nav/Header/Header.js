@@ -1,97 +1,131 @@
-import React, { useState, useEffect } from 'react';
-import {NavLink, Link} from 'react-router-dom';
-import { Typography, AppBar, Toolbar, Tab, Tabs, Box, InputBase } from '@material-ui/core';
-import { styled, alpha } from '@mui/material/styles';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import * as React from 'react';
+import { Link } from "react-router-dom";
+import { styled, useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
+import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
 
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import SearchIcon from '@mui/icons-material/Search';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
+const drawerWidth = 240;
 
-
-// import useStyles from './HeaderStyle';
-
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
+const AppBar = styled(MuiAppBar, {
+    shouldForwardProp: (prop) => prop !== 'open',
+  })(({ theme, open }) => ({
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    ...(open && {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: `${drawerWidth}px`,
+      transition: theme.transitions.create(['margin', 'width'], {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    }),
   }));
-  
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
+
+  const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
   }));
 
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
-      },
-    },
-  }));
-
-const Header = ({setFilter}) => {
-    const [value, setValue] = React.useState('one');
-    // const classes = useStyles();
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
+const Header = () => {
+    const theme = useTheme();
+    const [open, setOpen] = React.useState(false);
+  
+    const handleDrawerOpen = () => {
+      setOpen(true);
     };
-
-    const handleSearchChange = (e) => {
-        let i = e.target.value;
-        setFilter(i)
-    }
-
+  
+    const handleDrawerClose = () => {
+      setOpen(false);
+    };
+    // const classes = useStyles();
     return (
-        <AppBar position="relative" style={{ background: '#2E3B55' }} >
-            <Toolbar>
-                <Typography  variant="h6">
-                    React Pokédex
-                </Typography>
-                <Tabs value={value}>
-                    <Link to="/" style={{ textDecoration: 'none', color: '#FFF'}}>
-                        <Tab label="Catalog"  value='0'/>
-                    </Link>
-                    <Link to="/Search" style={{ textDecoration: 'none', color: '#FFF' }}>
-                        <Tab label="About"  value='1'/>
-                    </Link>
-                </Tabs>
-                <Search>
-                    <SearchIconWrapper>
-                        <SearchOutlinedIcon />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                        placeholder="Search…"
-                        inputProps={{ 'aria-label': 'search' }}
-                        onChange={handleSearchChange}
-                    />
-                </Search>
-            </Toolbar>
-        </AppBar>
+        <Auxiliary>
+            <AppBar position="relative" open={open}>
+                <Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        edge="start"
+                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" noWrap component="div">
+                        React Pokedex
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                    width: drawerWidth,
+                    boxSizing: 'border-box',
+                },
+                }}
+                variant="persistent"
+                anchor="left"
+                open={open}
+            >
+                <DrawerHeader>
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                    </IconButton>
+                </DrawerHeader>
+                <Divider />
+                <List>
+                    {['Catalog', 'Search', 'About'].map((text, index) => (
+                        <ListItem button key={text} component={Link} to={'/' + text}>
+                            <ListItemIcon>
+                                {index % 3 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+                {['Linkedin', 'Gitub'].map((text, index) => (
+                    <ListItem button key={text} component={Link} to={'/' + text}>
+                        <ListItemIcon>
+                            {index % 2 === 0 ? <LinkedInIcon /> : <GitHubIcon />}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+                </List>
+            </Drawer>
+        </Auxiliary>
     );
-    
 };
 
 export default Header;

@@ -4,24 +4,22 @@ import { Route, Switch} from 'react-router-dom';
 
 import Catalog from '../../containers/Catalog/Catalog';
 import Pokemon from '../../containers/Pokemon/Pokemon';
-import Search from '../../containers/About/About';
+import About from '../../containers/About/About';
+import Search from '../../containers/Search/Search'
 import Auxilary from '../Auxiliary/Auxiliary';
 import Header from '../../components/Nav/Header/Header';
 
+
 const Layout = () => {
-    
-    const[filter, setFilter] = useState('')
-    
 
     return (
         <Auxilary>
             <CssBaseline />
-            <Header setFilter={setFilter}/>
+            <Header/>
             <Switch>
-                <Route path="/" exact>
-                    <Catalog filter={filter}/>
-                </Route>
-                {/* <Route path="/About" exact component={About} /> */}
+                <Route path="/Catalog"  component={Catalog}/>
+                <Route path="/About" exact component={About} />
+                <Route path="/Search" exact component={Search} />
                 <Route path="/pokemon/:id" component={Pokemon} />
             </Switch>
         </Auxilary>
