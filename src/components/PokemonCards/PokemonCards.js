@@ -48,7 +48,7 @@ const PokemonCards = () => {
     }
 
     const setupWaypoint = () => {
-        if(allPokemon.length <= 900) {
+        if(allPokemon.length <= 807) {
             return (
                 <Waypoint onEnter={() => {
                     searchPokedex(nextUrl)
@@ -61,6 +61,7 @@ const PokemonCards = () => {
 
     let renderPokemon = () => allPokemon.map((p, i) => {
         if(i < 807) {
+
             return (
                 <Auxilary>
                     <PokemonCard key={p.id} pokemon={p} />
@@ -69,6 +70,7 @@ const PokemonCards = () => {
             )
         }
         else{
+            console.log('Eye should be here')
             return null;
             //Do nothing for pokemon over #807
         }

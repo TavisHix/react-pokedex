@@ -10,7 +10,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
@@ -67,7 +67,7 @@ const Header = () => {
     // const classes = useStyles();
     return (
         <Auxiliary>
-            <AppBar position="relative" open={open}>
+            <AppBar position="relative" open={open} style={{ background: '#2E3B55' }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -76,7 +76,7 @@ const Header = () => {
                         edge="start"
                         sx={{ mr: 2, ...(open && { display: 'none' }) }}
                     >
-                        <MenuIcon />
+                    <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
                         React Pokedex
@@ -104,7 +104,7 @@ const Header = () => {
                 <Divider />
                 <List>
                     {['Catalog', 'Search', 'About'].map((text, index) => (
-                        <ListItem button key={text} component={Link} to={'/' + text}>
+                        <ListItem button key={text} component={Link} to={text === 'Catalog' ? '/' : '/' + text}>
                             <ListItemIcon>
                                 {index % 3 === 0 ? <InboxIcon /> : <MailIcon />}
                             </ListItemIcon>

@@ -17,7 +17,7 @@ const Layout = () => {
             <CssBaseline />
             <Header/>
             <Switch>
-                <Route path="/Catalog"  component={Catalog}/>
+                <Route path="/" exact component={Catalog}/>
                 <Route path="/About" exact component={About} />
                 <Route path="/Search" exact component={Search} />
                 <Route path="/pokemon/:id" component={Pokemon} />

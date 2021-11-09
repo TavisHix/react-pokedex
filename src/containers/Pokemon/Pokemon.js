@@ -109,7 +109,7 @@ const Pokemon = (props) => {
     }
 
     const backButtonSelectedHandler = (id) => {
-        props.history.replace('/') ;
+        props.history.goBack() ;
     }
 
     let card = (<h1>Loading . . .</h1>)
