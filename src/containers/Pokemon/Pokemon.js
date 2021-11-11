@@ -133,7 +133,7 @@ const Pokemon = (props) => {
                         /> 
                     </Grid>
                     <Divider orientation="vertical" flexItem />
-                    <Grid item xs={12} sm={6} md={6} sm container>
+                    <Grid item xs={12} sm={6} md={6} container>
                         <Grid item container direction="column" spacing={2}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="h5" component="div">

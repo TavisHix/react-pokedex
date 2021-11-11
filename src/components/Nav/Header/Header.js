@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
 import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -16,14 +14,14 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
-
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import SearchIcon from '@mui/icons-material/Search';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import SearchIcon from '@mui/icons-material/Search';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
+
+import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
+
 
 const drawerWidth = 240;
 
@@ -103,10 +101,10 @@ const Header = () => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Catalog', 'Search', 'About'].map((text, index) => (
+                    {['Catalog', 'Search'].map((text, index) => (
                         <ListItem button key={text} component={Link} to={text === 'Catalog' ? '/' : '/' + text}>
                             <ListItemIcon>
-                                {index % 3 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {index % 2 === 0 ? <LibraryBooksIcon /> : <SearchIcon />}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
@@ -114,8 +112,8 @@ const Header = () => {
                 </List>
                 <Divider />
                 <List>
-                {['Linkedin', 'Gitub'].map((text, index) => (
-                    <ListItem button key={text} component={Link} to={'/' + text}>
+                {['Linkedin', 'Github'].map((text, index) => (
+                    <ListItem button key={text} component='a' href={text === 'Linkedin' ? 'https://www.linkedin.com/in/tavishicks' : 'https://github.com/TavisHix'}>
                         <ListItemIcon>
                             {index % 2 === 0 ? <LinkedInIcon /> : <GitHubIcon />}
                         </ListItemIcon>

@@ -60,24 +60,21 @@ const PokemonCards = () => {
     }
 
     let renderPokemon = () => allPokemon.map((p, i) => {
-        if(i < 807) {
-
+        if(p.id < 808) {
             return (
-                <Auxilary>
-                    <PokemonCard key={p.id} pokemon={p} />
+                <Auxilary key={i}>
+                    <PokemonCard key={i} pokemon={p} />
                     {i === allPokemon.length - 1 && setupWaypoint()}
                 </Auxilary>
             )
         }
         else{
-            console.log('Eye should be here')
             return null;
-            //Do nothing for pokemon over #807
         }
     });
 
-    let arr = [1,2,3,4]
-    let renderPokemonCardLoading = () => arr.map((p,i) => {
+    let arr = ['a','b','c','d']
+    let renderPokemonCardLoading = () => arr.map((p) => {
         return (<LoadingPokemonCard key={p} />)
     })
 

@@ -9,13 +9,10 @@ import PokemonCard from '../../components/PokemonCards/PokemonCard/PokemonCard';
 
 
 const Search = () => {
-    let info;
-    // const classes = useStyles();
     const [ allPokemon, setAllPokemon] = useState([]);
     const [ listOfNames, setListOfNames] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ choosenPoke, setChoosenPoke ] = useState();
-    const [ pokeUrl, setPokeUrl] = useState('');
 
 
     useEffect(() => {
@@ -55,33 +52,6 @@ const Search = () => {
                 }
         }    
     }
-    // const changePokemon = async (value) => {
-    //     if(value === null){
-    //         console.log('reading null')
-    //         return;
-    //     } else {
-    //         setIsLoading(true)
-    //         try{
-    //             let i = allPokemon[allPokemon.findIndex(pokemon => pokemon.name === value)];
-    //             setPokeUrl(i.url);
-    //             const d = await displayInfo(pokeUrl);
-    //             setChoosenPoke(d);
-                
-    //         }catch(e){
-    //             console.log(e)
-    //         }
-            
-            
-    //     }
-    // }
-
-    // const displayInfo = async(url) => {
-    //     console.log(url)
-    //     const response = await axios(url);
-    //     const {name, id, types} = response.data;
-    //     return {name, id, types}
-    // };
-
 
     let renderPokemon = () => {
         if(isLoading) {
@@ -102,15 +72,18 @@ const Search = () => {
     
     return (
         <Container maxWidth="lg" style={{paddingTop: 45}}>
-             <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={listOfNames}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Search Pokemon" />}
-                onChange={(event, newValue) => sendGetRequest(newValue)}
-            />
-            {renderPokemon()}
+            <Grid container direction='column' alignItems="center" justifyContent="center">
+                <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={listOfNames}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Search Pokemon" fullWidth style={{ marginBottom: "2em"}} />}
+                        onChange={(event, newValue) => sendGetRequest(newValue)}
+                />
+                {renderPokemon()}
+            </Grid>
+               
         </Container>
     )
     

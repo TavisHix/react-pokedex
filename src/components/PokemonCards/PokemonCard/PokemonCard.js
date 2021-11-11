@@ -25,7 +25,6 @@ import rock from '../../../images/icons/rock.webp';
 import steel from '../../../images/icons/steel.webp';
 
 const PokemonCard = React.memo(( pokemon ) => {
-    console.log(pokemon);
     const classes = useStyles();
     const history = useHistory();
     let  theme = createTheme();
