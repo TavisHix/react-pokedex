@@ -52,25 +52,12 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#built-with">Built With</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#things-i-would-change">Things I Would Change</a></li>
+    <li><a href="#credits">Credits</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -96,8 +83,8 @@ React Pokdex is a single page react application developed to provide insight on 
 
 
 
-<!-- GETTING STARTED -->
-## Getting Started
+<!-- Installation -->
+## Installation
 
 To get a local copy up and running follow these simple example steps.
 
@@ -121,7 +108,7 @@ The site allows users to browse the Catalog page for Pokemon or Search for Speci
 
 
 <!-- ROADMAP -->
-## Things I would change
+## Things I Would Change
 
 - [x] Implement Infinite scroll
 - [ ] Add evolutions to Pokemon Cards
@@ -136,7 +123,7 @@ See the [open issues](https://github.com/TavisHix/react-pokedex/issues) for a fu
 
 <!-- Credits -->
 ## Credits
-Pokémon images: https://github.com/HybridShivam/Pokemon
+Pokémon images: https://github.com/HybridShivam/Pokemon <br/>
 Pokémon type icons: https://github.com/duiker101/pokemon-type-svg-icons
 
 <!-- LICENSE -->
@@ -154,12 +141,8 @@ Distributed under the MIT License.
 [contributors-url]: https://github.com/TavisHix/react-pokedex/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/TavisHix/react-pokedex.svg?style=for-the-badge
 [forks-url]: https://github.com/TavisHix/react-pokedex/network/members
-[stars-shield]: https://img.shields.io/github/stars/TavisHix/react-pokedex.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
 [issues-shield]: https://img.shields.io/github/issues/TavisHix/react-pokedex.svg?style=for-the-badge
 [issues-url]: https://github.com/TavisHix/react-pokedex/issues
-[license-shield]: https://img.shields.io/github/license/TavisHix/react-pokedex.svg?style=for-the-badge
-[license-url]: https://github.com/TavisHix/react-pokedex/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: src/images/logo/siteImage.PNG
