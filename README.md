@@ -27,7 +27,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/TavisHix/react-pokedex">
     <img src="src/images/logo/React-Pokedex (2).png" alt="Logo">
   </a>
 
@@ -36,14 +36,14 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/TavisHix/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/TavisHix/react-pokedex"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/TavisHix/react-pokedex">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/TavisHix/react-pokedex/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/TavisHix/react-pokedex/issues">Request Feature</a>
   </p>
 </div>
 
@@ -156,7 +156,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [] Feature 3
     - [] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/TavisHix/react-pokedex/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
