@@ -31,12 +31,12 @@
     <img src="src/images/logo/React-Pokedex (2).png" alt="Logo">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">React Pokedex</h3>
 
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/TavisHix/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/github_username/repo_name">View Demo</a>
@@ -225,7 +225,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [license-url]: https://github.com/TavisHix/react-pokedex/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: src/images/logo/siteImage.PNG
 © 2021 GitHub, Inc.
 Terms
 Privacy
