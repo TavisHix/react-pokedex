@@ -48,21 +48,6 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#built-with">Built With</a></li>
-    <li><a href="#installation">Installation</a></li>
-    <li><a href="#things-i-would-change">Things I Would Change</a></li>
-    <li><a href="#credits">Credits</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -73,7 +58,7 @@ React Pokdex is a single page react application developed to provide insight on 
 
 
 
-### Built With
+## Built With
 
 * [Material UI](https://mui.com)
 * [React.js](https://reactjs.org/)
