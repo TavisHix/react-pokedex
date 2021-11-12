@@ -81,7 +81,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-React Pokdex is a single page react application developed to provide insight on the Video Game series, Pokémon.  This site serves as a database of Pokemon acquiring the data from https://pokeapi.co/.
+React Pokdex is a single page react application developed to provide insight on the Video Game series, Pokémon. This site serves as a database of Pokemon acquiring the data from https://pokeapi.co/. This porject was used to furhter my knowledge on react components, routing with React, local state management, react hooks and retrieving data from an API.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -92,7 +92,7 @@ React Pokdex is a single page react application developed to provide insight on 
 * [React.js](https://reactjs.org/)
 * [PokéAPI](https://pokeapi.co/)
 
-* <p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -114,7 +114,7 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-The site allows users to browse the Catalog page for Pokemon or Searcxh for SPecific Pokemon on the search page. Both ways will provde users with a description and base states of the selected pokemon.
+The site allows users to browse the Catalog page for Pokemon or Search for Specific Pokemon on the search page. Both ways will provde users with a description and base states of the selected pokemon.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -123,25 +123,19 @@ The site allows users to browse the Catalog page for Pokemon or Searcxh for SPec
 <!-- ROADMAP -->
 ## Things I would change
 
-- [] Implement Infinite scroll
-- [] Add evolutions to Pokemon Cards
-    - [] show all evolution chains possible
-- [] Refactor code
-- [] Implement redux to store pokemon data
+- [x] Implement Infinite scroll
+- [ ] Add evolutions to Pokemon Cards
+    - [ ] show all evolution chains possible
+- [ ] Refactor code
+- [ ] Implement redux to store pokemon data
 
 See the [open issues](https://github.com/TavisHix/react-pokedex/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- CONTRIBUTING -->
-## Why I built this project
-
-Learning react by building a project 
-
-
-##Credits
+<!-- Credits -->
+## Credits
 Pokémon images: https://github.com/HybridShivam/Pokemon
 Pokémon type icons: https://github.com/duiker101/pokemon-type-svg-icons
 
