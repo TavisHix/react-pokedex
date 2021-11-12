@@ -160,9 +160,9 @@ Distributed under the MIT License.
 [contributors-url]: https://github.com/TavisHix/react-pokedex/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/TavisHix/react-pokedex.svg?style=for-the-badge
 [forks-url]: https://github.com/TavisHix/react-pokedex/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/TavisHix/react-pokedex.svg?style=for-the-badge
 [stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/TavisHix/react-pokedex.svg?style=for-the-badge
 [issues-url]: https://github.com/TavisHix/react-pokedex/issues
 [license-shield]: https://img.shields.io/github/license/TavisHix/react-pokedex.svg?style=for-the-badge
 [license-url]: https://github.com/TavisHix/react-pokedex/blob/master/LICENSE.txt
