@@ -63,6 +63,7 @@ React Pokdex is a single page react application developed to provide insight on 
 * [Material UI](https://mui.com)
 * [React.js](https://reactjs.org/)
 * [PokéAPI](https://pokeapi.co/)
+* [ImageKit](https://imagekit.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -100,6 +101,8 @@ The site allows users to browse the Catalog page for Pokemon or Search for Speci
     - [ ] show all evolution chains possible
 - [ ] Refactor code
 - [ ] Implement redux to store pokemon data
+- [ ] Find potential ways to reduce load times
+    - [x] Implemented ImageKit to reduce image size and optimize load times
 
 See the [open issues](https://github.com/TavisHix/react-pokedex/issues) for a full list of proposed features (and known issues).
 
