@@ -127,7 +127,7 @@ const Pokemon = (props) => {
                         </ButtonBase> */}
                         <CardMedia 
                             className={classes.media}
-                            image={'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/' + pad(pokemonData[0].id, 3) + '.png'}
+                            image={'https://ik.imagekit.io/bcchhipdvlp/tr:w-300,h-300/PokeImg/' + pad(pokemonData[0].id, 3) + '.png'}
                             // title={}
                             height="140"
                         /> 

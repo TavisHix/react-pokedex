@@ -82,6 +82,7 @@ const Search = () => {
                         onChange={(event, newValue) => sendGetRequest(newValue)}
                 />
                 {renderPokemon()}
+                <img src='https://ik.imagekit.io/bcchhipdvlp/tr:w-300,h-300/PokeImg/001.png'/>
             </Grid>
                
         </Container>

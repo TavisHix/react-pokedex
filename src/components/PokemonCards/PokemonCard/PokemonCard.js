@@ -149,11 +149,11 @@ const PokemonCard = React.memo(( pokemon ) => {
                         <CardMedia 
                             className={classes.cardMedia}
                             component="img"
-                            image={'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/' + pad(pokemon.pokemon.id, 3) + '.png'}
+                            image={'https://ik.imagekit.io/bcchhipdvlp/tr:w-300,h-300/PokeImg/' + pad(pokemon.pokemon.id, 3) + '.png'}
                             title={pokemon.pokemon.name}
                         />
                         <CardContent className={classes.cardInfo} align="center">
-                            <Typography gutterBottom variant="h4">
+                            <Typography gutterBottom variant="h5">
                                 {capitalize(pokemon.pokemon.name)}
                             </Typography>
                             <Stack direction="row" spacing={2} justifyContent="center">

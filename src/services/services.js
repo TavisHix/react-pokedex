@@ -64,7 +64,7 @@ export async function getSinglePokemonData(id) {
                 console.log(allData)
                 return Promise.all([
                     fetch('https://pokeapi.co/api/v2/pokemon/' + id),
-                    fetch('http://pokeapi.co/api/v2/pokemon-species/' + id + '/')
+                    fetch('https://pokeapi.co/api/v2/pokemon-species/' + id)
                 ]).then(function (responses) {
                     // Get a JSON object from each of the responses
                     return Promise.all(responses.map(function (response) {
