@@ -19,39 +19,6 @@ export async function getPokemon(url) {
     })
 }
 
-// export async function getSinglePokemonData(id) {
-//     return new Promise((resolve,reject) => {
-//         fetch("https://pokeapi.co/api/v2/pokemon/" + id)
-//         .then(res => res.json())
-//         .then(data => {
-//             resolve(data);
-//         }).catch(err => {
-//             console.log(err)
-//         });
-//     })
-// }
-
-
-// export async function getSinglePokemonData(id) {
-//     return Promise.all([
-//             fetch('https://pokeapi.co/api/v2/pokemon/' + id),
-//             fetch('http://pokeapi.co/api/v2/pokemon-species/' + id + '/')
-//     ]).then(function (responses) {
-//         // Get a JSON object from each of the responses
-//         return Promise.all(responses.map(function (response) {
-//             return response.json();
-//         }));
-//     }).then(function (data) {
-//         // Log the data to the console
-//         // You would do something with both sets of data here
-//         console.log(data);
-//         return data;
-//     }).catch(function (error) {
-//         // if there's an error, log it
-//         console.log(error);
-//     })
-// }
-
 export async function getSinglePokemonData(id) {
     let allData;
     return new Promise((resolve,reject) => {
@@ -61,10 +28,9 @@ export async function getSinglePokemonData(id) {
         .then(newData => newData.json())
             .then(finalData => {
                 allData = finalData;
-                console.log(allData)
                 return Promise.all([
                     fetch('https://pokeapi.co/api/v2/pokemon/' + id),
-                    fetch('https://pokeapi.co/api/v2/pokemon-species/' + id)
+                    fetch('https://pokeapi.co/api/v2/pokemon-species/' + id + '/')
                 ]).then(function (responses) {
                     // Get a JSON object from each of the responses
                     return Promise.all(responses.map(function (response) {
@@ -85,3 +51,23 @@ export async function getSinglePokemonData(id) {
         });
     })
 }
+
+
+
+export const getPokemonsList = async (url) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (err) {}
+  };
+  
+  export const getPokemonDetailedList = async (url) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const {name, id, types} = data;
+      return {name, id, types};
+    } catch (err) {}
+  };
+  

@@ -171,20 +171,11 @@ const Pokemon = (props) => {
                                 <Typography variant="h5">
                                     Stats:
                                 </Typography>
-                                {/* <ul className={classes.list}> 
-                                    <Stack direction="row" spacing={2}>
-                                        {pokemonData[0].stats.map((stats) => {
-                                            let statName = stats.stat.name;
-                                            let statValue = stats.base_stat;
-                                            return  <Typography><li>{statName} <br/> {statValue}</li></Typography>
-                                        })}
-                                    </Stack>
-                                </ul> */}
                                 <Grid item container direction="row" spacing={2}>
-                                    {pokemonData[0].stats.map((stats) => {
+                                    {pokemonData[0].stats.map((stats, i) => {
                                         let statName = stats.stat.name;
                                         let statValue = stats.base_stat;
-                                        return  <Grid item><Typography>{statName} <br/> {statValue} </Typography></Grid>
+                                        return  <Grid item key={i}><Typography>{statName} <br/> {statValue} </Typography></Grid>
                                     })}
                                 </Grid>
                             </Grid>
