@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography, Card, CardContent, CardMedia, Grid, CardActionArea, MuiThemeProvider, createTheme, responsiveFontSizes, Tooltip} from '@material-ui/core';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
+import Avatar from '@material-ui/core/Avatar';
 import { useHistory } from 'react-router-dom';
 import useStyles from './PokemonCardSyles';
 
@@ -156,14 +155,16 @@ const PokemonCard = React.memo(( pokemon ) => {
                             <Typography gutterBottom variant="h5">
                                 {capitalize(pokemon.pokemon.name)}
                             </Typography>
-                            <Stack direction="row" spacing={2} justifyContent="center">
+                            {/* <Stack direction="row" spacing={2} justifyContent="center"> */}
+                            <div style={{ display: "flex" , flexDirection: "row", justifyContent: "center"}}>
                                 {pokemon.pokemon.types.map((type , i) => {
                                     typeLogo = getIcon(type.type.name);
                                     return <Tooltip disableFocusListener disableTouchListener title={type.type.name} key={pokemon.pokemon.id + i}>
-                                            <Avatar  alt={"" + type.type.name} src={typeLogo} sx={{ width: 56, height: 56 }}/>
+                                            <Avatar  alt={"" + type.type.name} src={typeLogo} styledx={{ width: "56", height: "56" }}/>
                                             </Tooltip> 
                                 })}
-                            </Stack>
+                            </div>
+                            {/* </Stack> */}
                         </CardContent>
                     </CardActionArea>
                 </Card>    

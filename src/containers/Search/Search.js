@@ -2,18 +2,18 @@ import React , {useState, useEffect} from 'react';
 import axios from 'axios';
 
 import { Grid, Container, TextField } from '@material-ui/core';
-import Autocomplete from '@mui/material/Autocomplete';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import PokemonCard from '../../components/PokemonCards/PokemonCard/PokemonCard';
-
+import ErrorMSG from '../../components/UI/error/ErrorMSG';
 
 const Search = () => {
     const [ allPokemon, setAllPokemon] = useState([]);
     const [ listOfNames, setListOfNames] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ choosenPoke, setChoosenPoke ] = useState();
-
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const url = 'https://pokeapi.co/api/v2/pokemon?limit=807';
@@ -45,10 +45,9 @@ const Search = () => {
                     const { id, name, types} = resp.data;
                     setChoosenPoke({ id, name ,types});
                 } catch (err) {
-                    // Handle Error Here
-                    console.error(err);
+                    setError(true);
                 } finally {
-                    setIsLoading(false)
+                    setIsLoading(false);
                 }
         }    
     }
@@ -68,22 +67,27 @@ const Search = () => {
         }  
     };
 
-   
+    let renderAll=(
+        <Grid container direction='column' alignItems="center" justifyContent="center">
+            <Autocomplete
+                    disablePortal
+                    id="combo-box-demo"
+                    options={listOfNames}
+                    style={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Search Pokemon" fullWidth style={{ marginBottom: "2em"}} />}
+                    onChange={(event, newValue) => sendGetRequest(newValue)}
+            />
+            {renderPokemon()}
+        </Grid>
+    )
+
+    if(error) {
+        renderAll = <div><ErrorMSG/></div>
+    }
     
     return (
         <Container maxWidth="lg" style={{paddingTop: 45}}>
-            <Grid container direction='column' alignItems="center" justifyContent="center">
-                <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={listOfNames}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Search Pokemon" fullWidth style={{ marginBottom: "2em"}} />}
-                        onChange={(event, newValue) => sendGetRequest(newValue)}
-                />
-                {renderPokemon()}
-            </Grid>
-               
+            {renderAll}
         </Container>
     )
     

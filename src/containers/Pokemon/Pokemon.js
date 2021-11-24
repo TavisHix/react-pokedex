@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Grid, Container, Typography, CardMedia, Paper, Avatar, Tooltip, Divider, Button  } from '@material-ui/core';
-import Stack from '@mui/material/Stack';
 
 import { getSinglePokemonData } from '../../services/services';
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary'
@@ -149,24 +148,24 @@ const Pokemon = (props) => {
                                 <Typography variant="h5" gutterBottom>
                                     Type: 
                                 </Typography>
-                                <Stack direction="row" spacing={2}>
+                                <div style={{ display: "flex" , flexDirection: "row", justifyContent: "center"}}>
                                     {pokemonData[0].types.map((type) => {
                                         typeLogo = getIcon(type.type.name);
                                         return  <Tooltip disableFocusListener disableTouchListener title={type.type.name} key={type.type.name}>
                                                     <Avatar key={pokemonData.id} alt={type.type.name} src={typeLogo} sx={{ width: 56, height: 56 }}/>
                                                 </Tooltip>
                                     })}
-                                </Stack>
+                                </div>
                                 <Typography variant="h5">
                                     Abilities:
                                 </Typography>
                                 <ul className={classes.list}>
-                                    <Stack direction="column" spacing={2}>
+                                    <div style={{ display: "flex" , flexDirection: "column", justifyContent: "center"}}>
                                         {pokemonData[0].abilities.map((abilities) => {
                                             let ability = abilities.ability.name;
                                             return <li key={ability}><Typography>{ability}</Typography></li>
                                         })}
-                                    </Stack>
+                                    </div>
                                 </ul>
                                 <Typography variant="h5">
                                     Stats:

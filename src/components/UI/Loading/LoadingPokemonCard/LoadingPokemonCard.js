@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Grid, MuiThemeProvider, createTheme, responsiveFontSizes} from '@material-ui/core';
-import Stack from '@mui/material/Stack';
-import Skeleton from '@mui/material/Skeleton';
+import Skeleton from '@material-ui/lab/Skeleton';
 import useStyles from './LoadingPokemonCardStyles';
 
 const LoadingPokemonCard = ( ) => {
@@ -13,13 +12,13 @@ const LoadingPokemonCard = ( ) => {
         <Grid item xs={6} sm={3} md={3}>
             <MuiThemeProvider theme={theme}>
                 <Card className={classes.card}>
-                    <Skeleton variant="rectangular" width={'100%'} height={160} />
+                    <Skeleton variant="rect" width={'100%'} height={160} />
                     <CardContent className={classes.cardInfo} align="center">
                         <Skeleton variant="text" />
-                        <Stack direction="row" spacing={2} justifyContent="center">
-                            <Skeleton variant="circular" width={40} height={40} />
-                            <Skeleton variant="circular" width={40} height={40} />
-                        </Stack>
+                        <div style={{ display: "flex" , flexDirection: "row", justifyContent: "center"}}>
+                            <Skeleton variant="circle" width={40} height={40} />
+                            <Skeleton variant="circle" width={40} height={40} />
+                        </div>
                     </CardContent>
                 </Card>    
              </MuiThemeProvider>

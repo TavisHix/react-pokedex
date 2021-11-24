@@ -7,8 +7,9 @@ import useStyles from './PokeCardsStyles'
 import LoadingPokemonCard from '../UI/Loading/LoadingPokemonCard/LoadingPokemonCard';
 import Auxilary from '../../hoc/Auxiliary/Auxiliary';
 import PokemonCard from './PokemonCard/PokemonCard';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import ErrorMSG from '../UI/error/ErrorMSG';
 
 
 
@@ -18,7 +19,8 @@ const PokemonCards = React.memo(() => {
     const [ allPokemon, setAllPokemon] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ limit, setLimit ] = useState(151);
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState('');
+    const [error, setError] = useState(false)
 
 
     useEffect(() => {
@@ -48,7 +50,7 @@ const PokemonCards = React.memo(() => {
             setAllPokemon(detailResults);
             })
         }catch(e){
-            console.error(e)
+            setError(true)
         }finally{
             setIsLoading(false)
         }
@@ -95,7 +97,7 @@ const PokemonCards = React.memo(() => {
             setAllPokemon( [...allPokemon, ...detailResults]);
             })
         }catch(e){
-            console.error(e)
+            setError(true);
         }finally{
             setIsLoading(false)
         }
@@ -130,104 +132,111 @@ const PokemonCards = React.memo(() => {
         return (<LoadingPokemonCard key={p} />)
     })
 
+    let renderAll = (<Container className={classes.cardGrid} alignitems="center" justify="center">
+    <InputLabel>Select a Generation</InputLabel>
+    <Select
+        variant="filled"
+        value={value}
+        label="Generation"
+        onChange={changeGenerations}
+        style={{minWidth: '200px', height: '60px', marginBottom: '15px'}}
+    >
+        <MenuItem value={'Gen1'}>
+            <Grid container > 
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen1/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen1/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen1/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+            </Grid>   
+        </MenuItem>
+        <MenuItem value={'Gen2'}>
+            <Grid container > 
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen2/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen2/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen2/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+            </Grid>   
+        </MenuItem>
+        <MenuItem value={'Gen3'}>
+            <Grid container > 
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen3/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen3/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen3/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+            </Grid>   
+        </MenuItem>
+        <MenuItem value={'Gen4'}>
+            <Grid container > 
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen4/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen4/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen4/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+            </Grid>   
+        </MenuItem>
+        <MenuItem value={'Gen5'}>
+            <Grid container > 
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen5/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen5/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen5/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+            </Grid>   
+        </MenuItem>
+        <MenuItem value={'Gen6'}>
+            <Grid container > 
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen6/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen6/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+                <Grid item xs={4} sm={4} md={4}>
+                    <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen6/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
+                </Grid>
+            </Grid>   
+        </MenuItem>
+    </Select>
+
+        <Grid container spacing={3}>
+            <Auxilary>                        
+                {renderPokemon()}
+                {isLoading && renderPokemonCardLoading()}
+            </Auxilary>
+        </Grid>
+    </Container>)
+
+
+    if(error) {
+        renderAll = <div><ErrorMSG/></div>
+    }
+
     return ( 
         <Auxilary>
-            <Container className={classes.cardGrid} alignitems="center" justify="center">
-            <InputLabel>Select a Generation</InputLabel>
-            <Select
-                variant="filled"
-                value={value}
-                label="Generation"
-                onChange={changeGenerations}
-                style={{minWidth: '200px', height: '60px', marginBottom: '15px'}}
-            >
-                <MenuItem value={'Gen1'}>
-                    <Grid container > 
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen1/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen1/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen1/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                    </Grid>   
-                </MenuItem>
-                <MenuItem value={'Gen2'}>
-                    <Grid container > 
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen2/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen2/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen2/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                    </Grid>   
-                </MenuItem>
-                <MenuItem value={'Gen3'}>
-                    <Grid container > 
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen3/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen3/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen3/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                    </Grid>   
-                </MenuItem>
-                <MenuItem value={'Gen4'}>
-                    <Grid container > 
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen4/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen4/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen4/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                    </Grid>   
-                </MenuItem>
-                <MenuItem value={'Gen5'}>
-                    <Grid container > 
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen5/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen5/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen5/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                    </Grid>   
-                </MenuItem>
-                <MenuItem value={'Gen6'}>
-                    <Grid container > 
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen6/1.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen6/2.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4}>
-                            <img src={'https://ik.imagekit.io/bcchhipdvlp/tr:w-350,h-350/Generations/Gen6/3.png'} alt='Gen 1 starter' style={{ height: '40px'}}/>         
-                        </Grid>
-                    </Grid>   
-                </MenuItem>
-            </Select>
-
-                <Grid container spacing={3}>
-                    <Auxilary>                        
-                        {renderPokemon()}
-                        {isLoading && renderPokemonCardLoading()}
-                    </Auxilary>
-                </Grid>
-            </Container>
+            {renderAll}
         </Auxilary>
     );
 })
