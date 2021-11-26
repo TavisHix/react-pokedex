@@ -22,15 +22,15 @@ export async function getPokemon(url) {
 export async function getSinglePokemonData(id) {
     let allData;
     return new Promise((resolve,reject) => {
-        fetch('http://pokeapi.co/api/v2/pokemon-species/' + id + '/')
+        fetch('https://cors-everywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon-species/' + id + '/')
         .then(res => res.json())
         .then(data => { return fetch(data.evolution_chain.url)})
         .then(newData => newData.json())
             .then(finalData => {
                 allData = finalData;
                 return Promise.all([
-                    fetch('https://pokeapi.co/api/v2/pokemon/' + id),
-                    fetch('https://pokeapi.co/api/v2/pokemon-species/' + id + '/')
+                    fetch('https://cors-everywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/' + id),
+                    fetch('https://cors-everywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon-species/' + id + '/')
                 ]).then(function (responses) {
                     // Get a JSON object from each of the responses
                     return Promise.all(responses.map(function (response) {

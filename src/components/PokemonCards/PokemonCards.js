@@ -24,7 +24,7 @@ const PokemonCards = React.memo(() => {
 
 
     useEffect(() => {
-        const url = 'https://pokeapi.co/api/v2/pokemon/';
+        const url = 'https://cors-everywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/';
         searchPokedex(url)
     }, [])
 
@@ -37,8 +37,10 @@ const PokemonCards = React.memo(() => {
     //Called upon changing generations
     const changeGenerations = async(event) => {
         setValue(event.target.value);
+        setIsLoading(true)
+        setAllPokemon([])
         let offset = getOffset(event.target.value)
-        let url = "https://pokeapi.co/api/v2/pokemon/?offset="+ offset + "&limit=20";
+        let url = "https://cors-everywhere.herokuapp.com/https://pokeapi.co/api/v2/pokemon/?offset="+ offset + "&limit=20";
         try{
             const response = await axios.get(url);
             const results = response.data.results;

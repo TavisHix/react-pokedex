@@ -4,6 +4,7 @@ import { Grid, Container, Typography, CardMedia, Paper, Avatar, Tooltip, Divider
 import { getSinglePokemonData } from '../../services/services';
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary'
 import useStyles from './PokemonStyles';
+import CircularColor from '../../components/UI/Loading/LoadCircle';
 
 import water from '../../images/icons/water.webp';
 import bug from '../../images/icons/bug.webp';
@@ -111,23 +112,16 @@ const Pokemon = (props) => {
         props.history.goBack() ;
     }
 
-    let card = (<h1>Loading . . .</h1>)
+    let card = (<CircularColor/>)
     if(!loading) {
         card = (        
         <Container maxWidth="lg" style={{paddingTop: 45}}>
             <Paper sx={{ p: 2 }}>
                 <Grid container spacing={7} > 
                     <Grid item  xs={12} sm={5} md={5}>
-                        {/* <Paper sx={{ p: 2, margin: 'auto', maxWidth: 500, maxHeight:, flexGrow: 1 }}>
-                            <img src={'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/' + pad(pokemonData.id, 3) + '.png'} />
-                        </Paper> */}
-                        {/* <ButtonBase sx={{ width: 60, height: 60 }}>
-                            <Img alt="complex" src={'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/' + pad(pokemonData.id, 3) + '.png'} />
-                        </ButtonBase> */}
                         <CardMedia 
                             className={classes.media}
                             image={'https://ik.imagekit.io/bcchhipdvlp/tr:w-300,h-300/PokeImg/' + pad(pokemonData[0].id, 3) + '.png'}
-                            // title={}
                             height="140"
                         /> 
                     </Grid>

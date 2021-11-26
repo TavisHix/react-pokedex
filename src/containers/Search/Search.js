@@ -68,13 +68,12 @@ const Search = () => {
     };
 
     let renderAll=(
-        <Grid container direction='column' alignItems="center" justifyContent="center">
+        <Grid container direction='column' alignItems="center" justifyContent="center" style={{ minHeight: '70vh' }}>
             <Autocomplete
-                    disablePortal
                     id="combo-box-demo"
                     options={listOfNames}
                     style={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Search Pokemon" fullWidth style={{ marginBottom: "2em"}} />}
+                    renderInput={(params) => <TextField {...params} label="Search by Pokemon Name" fullWidth style={{ marginBottom: "2em"}} />}
                     onChange={(event, newValue) => sendGetRequest(newValue)}
             />
             {renderPokemon()}
