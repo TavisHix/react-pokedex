@@ -38,7 +38,7 @@
     <a href="https://github.com/TavisHix/react-pokedex"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/TavisHix/react-pokedex">View Demo</a>
+    <a href="https://react-pokemon-5815c.web.app">View Demo</a>
     ·
     <a href="https://github.com/TavisHix/react-pokedex/issues">Report Bug</a>
     ·
